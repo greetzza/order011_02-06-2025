@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="icon" href="gambar/logo.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="gambar/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Gold with picture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Front of the Card -->
+    <div class="card-container" id="cardFront">
+        <div class="card-front">
+            <div class="gold-border"></div>
+            <div class="gold-flakes" id="goldFlakes"></div>
+            <h1 class="title">Special Greetings</h1>
+            <p class="subtitle">For</p>
+            <p class="subtitle">Putera</p>
+            <p class="subtitle">Jawa Tengah</p>
+            <p class="subtitle">2024</p>
+            <button class="open-btn" id="openBtn">OPEN CARD</button>
+        </div>
+    </div>
+
+    <!-- Inside of the Card -->
+    <div class="card-inside" id="cardInside">
+        <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+        <div class="message-container">
+            <h2 class="message-title">Dear, Albar Razzaq Mudho Hartono.</h2>
+            <p class="message" style="animation-delay: 0.2s">As the sun sets on this unforgettable chapter of your journey as Putera Puteri Jawa Tengah, I find myself overwhelmed with gratitude and admiration for the two of you. For an entire year, you carried the hopes, dreams, and spirit of our people upon your shoulders—not as a burden, but as a sacred calling. With every step you took, every smile you shared, and every sacrifice you made, you wove a legacy that will forever be etched in the hearts of those you touched.</p>
+            <p class="message" style="animation-delay: 0.4s">You were more than ambassadors; you were the living breath of Jawa Tengah’s soul—its resilience, its beauty, and its boundless potential. Through challenges and triumphs, you stood tall, not for glory, but for something far greater: love for your roots and an unshakable commitment to service. And in doing so, you didn’t just wear the crown—you became the light that guided others.</p>
+            <p class="message" style="animation-delay: 0.6s">The world may never fully know the sleepless nights, the silent struggles, or the quiet moments of doubt you overcame. But I want you to know this: your devotion did not go unnoticed. It bloomed in the lives you uplifted, in the pride you ignited, and in the stories that will be told long after this year fades into memory.</p>
+            <p class="message" style="animation-delay: 0.8s">So as you close this door, know that another awaits—one flung open by the courage and wisdom you’ve gained. Wherever life takes you next, carry forward the same fire that made this year so extraordinary. You are, and always will be, remarkable.</p>
+            <p class="message" style="animation-delay: 1s">Thank you for the tears, the laughter, the inspiration, and above all, for being you. The world is brighter because you’re in it.</p>
+            <p class="signature">With all my heart,<br>Flomma Flower</p>
+            <div class="gallery-container">
+                <div class="slider">
+                    <div class="slide active">
+                        <img src="gambar/putera.JPG" alt="Nature 1">
+                    </div>
+                </div>
+                <br>
+                <div class="masonry-gallery">
+                    <div class="masonry-item">
+                        <img src="gambar/foto(1).jpeg" alt="Art 1">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(2).jpeg" alt="Art 2">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(9).jpeg" alt="Art 3">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(6).jpeg" alt="Art 4">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(7).jpeg" alt="Art 5">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(5).jpeg" alt="Art 6">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(3).jpeg" alt="Art 7">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(8).jpeg" alt="Art 8">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(10).jpeg" alt="Art 9">
+                    </div>
+                    <div class="masonry-item">
+                        <img src="gambar/foto(4).jpeg" alt="Art 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="gambar/lagu.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const cardFront = document.getElementById('cardFront');
+            const cardInside = document.getElementById('cardInside');
+            const openBtn = document.getElementById('openBtn');
+            const closeBtn = document.getElementById('closeBtn');
+            const musicControl = document.getElementById('musicControl');
+            const bgMusic = document.getElementById('bgMusic');
+            const goldFlakes = document.getElementById('goldFlakes');
+            
+            // Create gold flakes
+            function createFlakes() {
+                const flakeCount = 30;
+                for (let i = 0; i < flakeCount; i++) {
+                    const flake = document.createElement('div');
+                    flake.classList.add('flake');
+                    
+                    // Random properties
+                    const size = Math.random() * 5 + 2;
+                    const posX = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 10;
+                    
+                    flake.style.width = `${size}px`;
+                    flake.style.height = `${size}px`;
+                    flake.style.left = `${posX}%`;
+                    flake.style.animationDelay = `${delay}s`;
+                    flake.style.animationDuration = `${duration}s`;
+                    
+                    goldFlakes.appendChild(flake);
+                }
+            }
+            
+            // Open card
+            openBtn.addEventListener('click', function() {
+                cardFront.style.opacity = '0';
+                cardFront.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    cardInside.style.display = 'flex';
+                    setTimeout(() => {
+                        cardInside.style.opacity = '1';
+                    }, 10);
+                }, 500);
+                
+                // Play music
+                bgMusic.volume = 0.3;
+                bgMusic.play();
+            });
+            
+            // Close card
+            closeBtn.addEventListener('click', function() {
+                cardInside.style.opacity = '0';
+                
+                setTimeout(() => {
+                    cardInside.style.display = 'none';
+                    cardFront.style.opacity = '1';
+                    cardFront.style.pointerEvents = 'auto';
+                }, 500);
+            });
+            
+            // Music control
+            let isMusicPlaying = false;
+            musicControl.addEventListener('click', function() {
+                if (isMusicPlaying) {
+                    bgMusic.pause();
+                    musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                } else {
+                    bgMusic.play();
+                    musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+            
+            // Initialize
+            createFlakes();
+        });
+    </script>
+</body>
+</html>
